@@ -1,0 +1,35 @@
+python send format:
+0x10
+[0xHHHH, 0xWWWW]
+
+0x00
+[0xcolor ...] H*W - a frame
+
+0x30
+request for is_stop
+
+----------------------------------------
+stm32 send format
+0x00 - recieved frame (do nothing)
+0x10 - request H, W
+0x20 - pause/start
+0x21 - faster
+0x22 - slower
+0xff - quit
+
+----------------------------------------
+stream:
+... -> python send -> stm32 ack -> python send -> stm32 ack ...
+
+----------------------------------------
+KEY_WKUP
+- short: save frame
+- long: quit
+
+KEY_0
+- short: scale
+- long: slower
+
+KEY_1
+- short: pause/start
+- long: faster
